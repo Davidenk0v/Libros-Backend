@@ -5,10 +5,11 @@ import com.backend.libros.entities.Book;
 import com.backend.libros.persistence.BookDAO;
 import com.backend.libros.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-
+@Component
 public class BookDAOImpl implements BookDAO {
     @Autowired
     private BookRepository bookRepository;

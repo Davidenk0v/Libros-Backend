@@ -5,10 +5,11 @@ import com.backend.libros.entities.Category;
 import com.backend.libros.persistence.CategoryDAO;
 import com.backend.libros.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-
+@Component
 public class CategoryDAOImpl implements CategoryDAO {
 
     @Autowired
