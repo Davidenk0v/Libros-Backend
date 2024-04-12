@@ -2,10 +2,11 @@ package com.backend.libros.payload.request;
 
 
 import com.backend.libros.entities.UserEntity;
+import com.backend.libros.payload.response.UserDTO;
 
 public class UserValidation {
 
-    public ResponseDTO validate(UserEntity user) {
+    public ResponseDTO validate(UserDTO user) {
         ResponseDTO response = new ResponseDTO();
 
         response.setNumOfErrors(0);

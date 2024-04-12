@@ -1,6 +1,7 @@
 package com.backend.libros.persistence.impl;
 
 import com.backend.libros.entities.Author;
+import com.backend.libros.entities.UserEntity;
 import com.backend.libros.persistence.AuthorDAO;
 import com.backend.libros.persistence.UserDAO;
 import com.backend.libros.repositories.AuthorRepository;
@@ -16,19 +17,24 @@ public class UserDAOImpl implements UserDAO {
     @Autowired
     private UserRepository userRepository;
     @Override
-    public List<Author> findAll() {
+    public List<UserEntity> findAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public Optional<Author> findById(Long id) {
+    public Optional<UserEntity> findById(Long id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public Optional<UserEntity> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 
     @Override
-    public void save(Author author) {
-        userRepository.save(author);
+    public void save(UserEntity userEntity) {
+        userRepository.save(userEntity);
     }
 
     @Override

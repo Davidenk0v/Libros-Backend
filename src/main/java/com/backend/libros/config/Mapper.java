@@ -3,9 +3,11 @@ package com.backend.libros.config;
 import com.backend.libros.entities.Author;
 import com.backend.libros.entities.Book;
 import com.backend.libros.entities.Category;
+import com.backend.libros.entities.UserEntity;
 import com.backend.libros.payload.response.AuthorDTO;
 import com.backend.libros.payload.response.BookDTO;
 import com.backend.libros.payload.response.CategoryDTO;
+import com.backend.libros.payload.response.UserDTO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -68,6 +70,31 @@ public class Mapper {
                 .builder()
                 .name(category.getName())
                 .books(category.getBooks())
+                .build();
+    }
+
+    //USERS
+    public static UserDTO userToDTO(UserEntity user){
+        return new UserDTO()
+                .builder()
+                .id(user.getId())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .build();
+    }
+
+    public static UserEntity dtoToUser(UserDTO userDTO){
+        return new UserEntity()
+                .builder()
+                .id(userDTO.getId())
+                .firstName(userDTO.getFirstName())
+                .lastName(userDTO.getLastName())
+                .username(userDTO.getUsername())
+                .email(userDTO.getEmail())
+                .password(userDTO.getPassword())
                 .build();
     }
 }

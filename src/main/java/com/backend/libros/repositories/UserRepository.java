@@ -1,9 +1,12 @@
 package com.backend.libros.repositories;
 
-import com.backend.libros.entities.Author;
+import com.backend.libros.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
-public interface UserRepository extends JpaRepository<Author, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    Optional<UserEntity> findByEmail(String email);
 }
