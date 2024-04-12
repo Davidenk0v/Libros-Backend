@@ -65,4 +65,22 @@ public class BookServiceImpl implements BookService {
         }
         return new ResponseEntity<>("El libro con ID " + id + " no existe.", HttpStatus.NOT_FOUND);
     }
+
+    @Override
+    public ResponseEntity<?> update(Long id, BookDTO bookDTO) {
+        Optional<Book> bookOptional = bookDAO.findById(id);
+        if(bookOptional.isPresent()){
+            Book book = bookOptional.get()
+                    .builder()
+                    .title(bookDTO.getTitle())
+                    .author(bookDTO.getAuthor())
+                    .category(bookDTO.getCategory())
+                    .build();
+
+            bookDAO.save(book);
+            return new ResponseEntity<>("Actualizado correctamente", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Error al actualizar", HttpStatus.BAD_REQUEST);
+    }
 }

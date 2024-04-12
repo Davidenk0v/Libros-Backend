@@ -12,4 +12,5 @@ public interface BookService {
     ResponseEntity<?> findById(Long id);
     ResponseEntity<?> save(BookDTO book);
     ResponseEntity<?> deleteById(Long id);
+    ResponseEntity<?> update(Long id, BookDTO bookDTO);
 }
