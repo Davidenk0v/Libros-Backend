@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static com.backend.libros.config.Mapper.*;
@@ -70,15 +72,13 @@ public class BookServiceImpl implements BookService {
     public ResponseEntity<?> update(Long id, BookDTO bookDTO) {
         Optional<Book> bookOptional = bookDAO.findById(id);
         if(bookOptional.isPresent()){
-            Book book = bookOptional.get()
-                    .builder()
-                    .title(bookDTO.getTitle())
-                    .author(bookDTO.getAuthor())
-                    .category(bookDTO.getCategory())
-                    .build();
-
+            Book book = bookOptional.get();
+            book.setTitle(bookDTO.getTitle());
+            book.setUrlImg(bookDTO.getUrlImg());
             bookDAO.save(book);
-            return new ResponseEntity<>("Actualizado correctamente", HttpStatus.OK);
+            Map<String, String> message = new HashMap<>();
+            message.put(book.toString(), "Actualizado correctamente");
+            return new ResponseEntity<>(message, HttpStatus.OK);
         }
 
         return new ResponseEntity<>("Error al actualizar", HttpStatus.BAD_REQUEST);

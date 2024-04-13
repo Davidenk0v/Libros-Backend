@@ -10,10 +10,13 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@ToString
 public class BookDTO {
 
     private Long id;
     private String title;
     private Author author;
     private Category category;
+    private String urlImg;
+
 }

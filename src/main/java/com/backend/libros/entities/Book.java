@@ -3,8 +3,8 @@ package com.backend.libros.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
 @Setter
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,4 +22,10 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "id_category", nullable = false)
     private Category category;
+    private String urlImg;
+
+    @Override
+    public String toString(){
+        return "Author: " + author + " Title: " + title + " Category: " + category + " UrlImg: " + urlImg;
+    }
 }
