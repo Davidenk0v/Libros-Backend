@@ -13,7 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static com.backend.libros.config.Mapper.*;
@@ -62,7 +64,9 @@ public class UserServiceImpl implements UserService {
         Optional<UserEntity> optionalUser = userDao.findById(id);
         if(optionalUser.isPresent()){
             userDao.deleteById(id);
-            return new ResponseEntity<>("Usuario borrado correctamente", HttpStatus.OK);
+            Map<String, String> response = new HashMap();
+            response.put("OK","Usuario borrado correctamente" );
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>("El usuario con ID " + id + " no existe.", HttpStatus.NOT_FOUND);
 
